@@ -41,6 +41,8 @@ pipeline {
     post {
         success {
             echo 'Build and deployment successful!'
+            echo "Build id : ${BUILD_ID}"
+            echo "Build url : ${BUILD_URL}"
         }
         failure {
             echo 'Build or deployment failed.'
