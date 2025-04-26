@@ -13,6 +13,6 @@ public class MainController {
 
     @GetMapping("/{name}")
     public String helloName(@PathVariable String name) {
-        return "Hello " + name ;
+        return "Hello " + name + " this is names greeting page";
     }
 }
