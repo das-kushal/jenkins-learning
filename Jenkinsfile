@@ -11,19 +11,19 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the project using Maven
-                sh './mvnw clean package'
+                sh 'mvn clean package'
             }
         }
         stage('Test') {
             steps {
                 // Run tests using Maven
-                sh './mvnw test'
+                sh 'mvn test'
             }
         }
         stage('Package') {
             steps {
                 // Package the application
-                sh './mvnw package'
+                sh 'mvn package'
             }
         }
         stage('Deploy') {
