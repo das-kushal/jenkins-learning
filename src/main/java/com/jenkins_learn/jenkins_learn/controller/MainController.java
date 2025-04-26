@@ -15,4 +15,9 @@ public class MainController {
     public String helloName(@PathVariable String name) {
         return "Hello " + name + " this is names greeting page";
     }
+
+    @GetMapping("/jenkins")
+    public String jenkins() {
+        return "Jenkins testing!!";
+    }
 }
