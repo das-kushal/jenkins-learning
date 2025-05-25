@@ -14,7 +14,7 @@ public class MainController {
 
     @GetMapping("/health")
     public String health() {
-        return "health ok!";
+        return "health ok!!";
     }
 
     @GetMapping("/{name}")
