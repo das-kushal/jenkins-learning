@@ -20,4 +20,9 @@ public class MainController {
     public String jenkins() {
         return "Jenkins testing!!";
     }
+
+    @GetMapping("/health")
+    public String health() {
+        return "ok";
+    }
 }
