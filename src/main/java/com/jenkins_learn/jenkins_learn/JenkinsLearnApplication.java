@@ -33,6 +33,8 @@ public class JenkinsLearnApplication implements CommandLineRunner {
         log.info(Hello.showing(Arrays.asList(10,20)));
     }
 
+
+
     private static class Hello {
         private static String showing(List<Integer> nums) {
             for(int num:nums) log.info(String.format("%d\t", num));
