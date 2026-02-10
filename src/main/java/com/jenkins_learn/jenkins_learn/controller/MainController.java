@@ -1,11 +1,18 @@
 package com.jenkins_learn.jenkins_learn.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.api.ProfilesApi;
+import com.example.demo.model.BaseProfile;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.NativeWebRequest;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-public class MainController {
+public class MainController implements ProfilesApi {
     @GetMapping("/")
     public String hello() {
         return "<h1>Hello this is home page</h1>";
@@ -24,5 +31,15 @@ public class MainController {
     @GetMapping("/health")
     public String health() {
         return "ok";
+    }
+
+    @Override
+    public Optional<NativeWebRequest> getRequest() {
+        return ProfilesApi.super.getRequest();
+    }
+
+    @Override
+    public ResponseEntity<BaseProfile> profilesPost(BaseProfile baseProfile) {
+        return ProfilesApi.super.profilesPost(baseProfile);
     }
 }
