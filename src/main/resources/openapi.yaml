@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Profile Service
+  version: 1.0.0
+
+paths:
+  /profiles:
+    post:
+      summary: Create a profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseProfile'
+      responses:
+        '200':
+          description: Profile created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseProfile'
+
+components:
+  schemas:
+
+    BaseProfile:
+      type: object
+      required:
+        - profileType
+        - id
+      properties:
+        id:
+          type: string
+        profileType:
+          type: string
+      discriminator:
+        propertyName: profileType
+        mapping:
+          FAMILY: '#/components/schemas/FamilyProfile'
+          COMPANY: '#/components/schemas/CompanyProfile'
+
+    FamilyProfile:
+      allOf:
+        - $ref: '#/components/schemas/BaseProfile'
+        - type: object
+          required:
+            - familyName
+          properties:
+            familyName:
+              type: string
+            membersCount:
+              type: integer
+              format: int32
+
+    CompanyProfile:
+      allOf:
+        - $ref: '#/components/schemas/BaseProfile'
+        - type: object
+          required:
+            - companyName
+          properties:
+            companyName:
+              type: string
+            gstNumber:
+              type: string
